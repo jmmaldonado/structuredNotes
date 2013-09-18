@@ -1,0 +1,30 @@
+[V] Pagina de opciones con los tamaños máximos de cada area de la minuta para su representacion
+       A partir de este tamaño máximo se hará scroll de cada panel
+       Representar la altura como porcentaje del realstate vertical en lugar de pixels absolutos
+
+[ ] Al cargar la minuta adaptar el tamaño de las celdas a lo especificado en las opciones
+
+[ ] Crear panel para editar el contenido de cada area de la minuta
+       [ ] Haciendo doble tap en el area de la minuta a editar saldra un panel para editar el contenido
+       [ ] El panel debe permitir volver al estado anterior o guardar los cambios
+
+[ ] Opción para ocultar las cabeceras de las zonas de la minuta (modo experto) para conservar realstate
+    He metido un <span class=".etiquetaCelda"> .... </span> para cada titulo de las celdas
+    Se pueden ocultar / mostrar todos mediante $("span.etiquetaCelda").hide() show()
+
+[ ] Al abrir el dialogo de edicion de campo, redimensionar el textArea a un tamaño adecuado para dejar hueco
+    al teclado en posición horizontal del dispositivo. (Buscar cuantos px mide un teclado en cada disp soportado)
+
+[V] NO FUNCIONA el double tap en iPad / iPhone para sacar el dialogo de edicion. Puede ser pq estoy usando la fncion
+    dblclick y no dbltap. Mirar si hay que inhabilitar el zoom en el viewport
+    - Cambiado a click simple. Mas intuitivo en entornos iOS
+
+[ ] Buscar el fichero IPA generado despues de ejecutar "phonegap run ios" en la VM Mac
+
+[ ] Añadir un panel para los mensajes de debug
+
+[ ] Quitar referencias a WYSIHTML5, de ahora en adelante se usara CKEditor
+
+ERROR! Al guardar el campo con CKEditor al volver a la pagina de edicion salta un error:
+Uncaught TypeError: Cannot call method 'removeChild' of null en iScroll.
+Tiene algo que ver con cuando se refrescan los iScrolls 

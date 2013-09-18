@@ -1,0 +1,962 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+<title>Your New Application</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+<style type="text/css">
+    /* Prevent copy paste for all elements except text fields */
+    *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+    input, textarea  { -webkit-user-select:text; }
+    
+    /* Set up the page with a default background image */
+    body {
+        background-color:#fff;
+        color:#000;
+        font-family:Arial;
+        font-size:12pt;
+        margin:0px;padding:0px;
+        background-image:url('images/background.jpg');
+        margin: 0;
+        padding: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+    
+    html {
+        margin: 0;
+    	padding: 0;
+    	width: 100%;
+    	height: 100%; 
+    }
+    
+    .content {
+    	min-height: 100%;
+    	position: relative;
+    	overflow: auto;
+    	z-index: 0; 
+    }
+    
+    .background {
+    	position: absolute;
+    	z-index: -1;
+    	top: 0;
+    	bottom: 0;
+    	margin: 0;
+    	padding: 0;
+    }
+    
+    .top_block {
+    	width: 100%;
+    	display: block; 
+    }
+    
+    .bottom_block {
+    	position: absolute;
+    	width: 100%;
+    	display: block;
+    	bottom: 0; 
+    }
+    
+    .left_block {
+    	display: block;
+    	float: left; 
+    }
+    
+    .right_block {
+    	display: block;
+    	float: right; 
+    }
+    
+    .center_block {
+    	display: block;
+    	width: auto; 
+    }
+    
+    .bloqueSuperior {
+    	width: 100%;
+    	height: 237px;
+    	background-color: #993399;
+    }
+    
+    .background.bloqueAsistentes {
+    	height: auto !important;
+    	padding-bottom: 0;
+    	left: 0;
+    	width: 50%;
+    	background-color: #993366; 
+    }
+    
+    .bloqueAsistentes {
+    	height: auto;
+    	width: 50%;
+    	padding-bottom: 0px;
+    }
+    
+    .background.bloqueAcciones {
+    	height: auto !important;
+    	padding-bottom: 0;
+    	right: 0;
+    	width: 50%;
+    	background-color: #6699ff; 
+    }
+    
+    .bloqueAcciones {
+    	height: auto;
+    	width: 50%;
+    	padding-bottom: 0px;
+    }
+    
+    .background.bloqueNota {
+    	height: auto !important;
+    	padding-bottom: 0;
+    	left: 0;
+    	right: 0;
+    	background-color: #663366;
+    	margin-top: 237px;
+    	margin-bottom: 268px; 
+    }
+    
+    .bloqueNota {
+    	width: auto;
+    	height: auto;
+    	padding-bottom: 300px;
+    }
+    
+    .bloqueSWOT {
+    	width: 100%;
+    	height: 300px;
+    	background-color: #669999;
+    }
+    
+    .bloqueSW {
+    	width: 100%;
+    	height: 50%;
+        min-height: 150px;
+    	background-color: #669966;
+    }
+    
+    .background.bloqueS {
+    	height: 100% !important;
+    	padding-bottom: 0;
+    	left: 0;
+    	width: 50%;
+    	background-color: #666699; 
+    }
+    
+    .bloqueS {
+    	height: 100%;
+        min-height: 150px;
+    	width: 50%;
+    	padding-bottom: 0px;
+    }
+    
+    .background.bloqueW {
+    	height: 100% !important;
+    	padding-bottom: 0;
+    	right: 0;
+    	width: 50%;
+    	background-color: #666666; 
+    }
+    
+    .bloqueW {
+    	height: 100%;
+        min-height: 150px;
+    	width: 50%;
+    	padding-bottom: 0px;
+    }
+    
+    .bloqueOT {
+    	width: 100%;
+        min-height: 150px;
+    	height: 50%;
+    	background-color: #6666ff;
+    }
+    
+    .background.bloqueO {
+    	height: 100% !important;
+    	padding-bottom: 0;
+    	left: 0;
+    	width: 50%;
+    	background-color: #6633ff; 
+    }
+    
+    .bloqueO {
+    	height: 100%;
+        min-height: 150px;
+    	width: 50%;
+    	padding-bottom: 0px;
+    }
+    
+    .background.bloqueT {
+    	height: 100% !important;
+    	padding-bottom: 0;
+    	right: 0;
+    	width: 50%;
+    	background-color: #663399; 
+    }
+    
+    .bloqueT {
+    	height: 100%;
+        min-height: 150px;
+    	width: 50%;
+    	padding-bottom: 0px;
+    }
+    
+    
+    
+    /*PARA EL EDITOR HTML*/
+    
+    strong {
+      font-weight: bold;
+    }
+    
+    .get-started {
+      margin: 20px 0;
+      color: #666;
+      font-size: 11px;
+      text-align: center;
+    }
+    
+    .get-started a {
+      color: #666;
+    }
+    
+    #wysihtml5-editor-toolbar {
+      position: relative;
+    }
+    
+    header {
+      display: block;
+      border-radius: 4px;
+      width: 400px;
+      background: #f6f6f6;
+      position: relative;
+      z-index: 1;
+      text-align: left;
+      border: 1px solid #ddd\9; /* IE 8 and below */
+      background-image: linear-gradient(bottom, rgb(238,238,238) 0%, rgb(255,255,255) 100%);
+      background-image: -o-linear-gradient(bottom, rgb(238,238,238) 0%, rgb(255,255,255) 100%);
+      background-image: -moz-linear-gradient(bottom, rgb(238,238,238) 0%, rgb(255,255,255) 100%);
+      background-image: -webkit-linear-gradient(bottom, rgb(238,238,238) 0%, rgb(255,255,255) 100%);
+      background-image: -ms-linear-gradient(bottom, rgb(238,238,238) 0%, rgb(255,255,255) 100%);
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+      font-size: 0;
+      text-align: center;
+    }
+    
+    .commands {
+      border-left: 1px solid #ddd;
+      display: inline-block;
+    }
+    
+    [data-wysihtml5-command],
+    [data-wysihtml5-action],
+    .fore-color {
+      position: relative;
+      border-right: 1px solid #ddd;
+      border-left: 1px solid #fff;
+      list-style: none;
+      font-size: 12px;
+      display: inline-block;
+      cursor: pointer;
+      height: 40px;
+      width: 68px;
+    }
+    
+    [data-wysihtml5-command]:after,
+    [data-wysihtml5-action]:after,
+    .fore-color:after {
+      content: "";
+      background-image: url(images/spr_toolbar_icons_r1.png);
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+    
+    [data-wysihtml5-command]:hover,
+    [data-wysihtml5-action]:hover,
+    .fore-color:hover {
+      background-image: linear-gradient(bottom, rgb(229,240,226) 0%, rgb(255,255,255) 100%);
+      background-image: -o-linear-gradient(bottom, rgb(229,240,226) 0%, rgb(255,255,255) 100%);
+      background-image: -moz-linear-gradient(bottom, rgb(229,240,226) 0%, rgb(255,255,255) 100%);
+      background-image: -webkit-linear-gradient(bottom, rgb(229,240,226) 0%, rgb(255,255,255) 100%);
+      background-image: -ms-linear-gradient(bottom, rgb(229,240,226) 0%, rgb(255,255,255) 100%);
+    }
+    
+    [data-wysihtml5-command="bold"]:after {
+      background-position: 24px center;
+    }
+    
+    [data-wysihtml5-command="italic"]:after {
+      background-position: -48px center;
+    }
+    
+    [data-wysihtml5-command="insertUnorderedList"]:after {
+      background-position: -115px center;
+    }
+    
+    [data-wysihtml5-command="insertOrderedList"]:after {
+      background-position: -197px center;
+    }
+    
+    [data-wysihtml5-command="formatBlock"][data-wysihtml5-command-value="h1"]:after {
+      background-position: -344px center;
+    }
+    
+    [data-wysihtml5-command="formatBlock"][data-wysihtml5-command-value="h2"]:after {
+      background-position: -428px center;
+    }
+    
+    [data-wysihtml5-command="createLink"]:after {
+      background-position: -271px center;
+    }
+    
+    [data-wysihtml5-command="insertImage"]:after {
+      background-position: -513px center;
+    }
+    
+    .fore-color:after {
+      background-position: -741px center;
+    }
+    
+    [data-wysihtml5-command="insertSpeech"]:after {
+      background-position: -596px center;
+    }
+    
+    [data-wysihtml5-action="change_view"]:after {
+      background-position: -670px center;
+    }
+    
+    .fore-color ul {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      top: 40px;
+      right: -1px;
+      left: -2px;
+      border: 1px solid #ccc;
+      border-top: 0;
+      background: #fff;
+      overflow: hidden;
+    }
+    
+    .fore-color li {
+      display: block;
+      margin: 3px;
+      width: auto;
+      border: 0;
+      height: 15px;
+    }
+    
+    .fore-color li:after {
+      display: none;
+    }
+    
+    .fore-color:hover ul {
+      display: block;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="silver"] {
+      background: silver !important;
+    }
+    
+    
+    .fore-color [data-wysihtml5-command-value="gray"] {
+      background: gray !important;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="maroon"] {
+      background: maroon !important;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="red"] {
+      background: red !important;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="purple"] {
+      background: purple !important;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="green"] {
+      background: green !important;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="olive"] {
+      background: olive !important;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="navy"] {
+      background: navy !important;
+    }
+    
+    .fore-color [data-wysihtml5-command-value="blue"] {
+      background: blue !important;
+    }
+    
+    .fore-color .wysihtml5-command-active {
+      outline: 1px solid #666;
+      outline-offset: 1px;
+    }
+    
+    .wysihtml5-commands-disabled .fore-color ul {
+      display: none;
+    }
+    
+    .wysihtml5-action-active,
+    .wysihtml5-command-active {
+      box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.2);
+      background: #eee !important;
+    }
+    
+    .wysihtml5-commands-disabled [data-wysihtml5-command],
+    .wysihtml5-commands-disabled .fore-color {
+      opacity: 0.4;
+      cursor: default;
+      background-image: none !important;
+    }
+    
+    [data-wysihtml5-dialog] {
+      color: #333;
+      font-size: 14px;
+      text-align: left;
+      border-radius: 4px;
+      -ms-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      background: #FFFBE0;
+      position: absolute;
+      width: 810px;
+      text-align: center;
+      top: 45px;
+    }
+    
+    [data-wysihtml5-dialog] input {
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 3px;
+      width: 300px;
+    }
+    
+    [data-wysihtml5-dialog] input:focus {
+      outline: 0;
+      border: 1px solid #666;
+    }
+    
+    [data-wysihtml5-dialog-action] {
+      padding: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    [data-wysihtml5-dialog-action="save"] {
+      background: #007200;
+    }
+    
+    [data-wysihtml5-dialog-action="cancel"] {
+      background: #999;
+    }
+    
+    section {
+      position: absolute;
+      width: 810px;
+      top: 139px;
+      bottom: 0;
+    }
+    
+    textarea {
+      width: 100%;
+      background: transparent;
+      height: 100%;
+      border: 0;
+      /*resize: none;*/
+      white-space: pre;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 10px;
+      word-wrap: normal;
+      -ms-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    
+    textarea:focus {
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.4);
+      outline: 0;
+    }
+    
+    a.fork {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+    }
+    
+    
+    
+    
+    
+</style>
+<script type="text/javascript" charset="utf-8" src="_appMobi/appmobi_local_bootstrap.js"></script> 
+<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script> 
+
+
+<link href="jquery.mobile-1.3.1.min.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+/* This function runs once the page is loaded, but appMobi is not yet active */
+var init = function(){
+
+};
+window.addEventListener("load",init,false);  
+
+/* This code prevents users from dragging the page */
+var preventDefaultScroll = function(event) {
+    event.preventDefault();
+    window.scroll(0,0);
+    return false;
+};
+document.addEventListener('touchmove', preventDefaultScroll, false);
+
+/* This code is used to run as soon as appMobi activates */
+var onDeviceReady=function(){
+    //Size the display to 768px by 1024px
+    AppMobi.display.useViewport(768,1024);
+	
+	//hide splash screen
+	AppMobi.device.hideSplashScreen();	
+};
+document.addEventListener("appMobi.device.ready",onDeviceReady,false);    
+</script>
+
+    <style>    
+    	.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+		.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+		#chat .ui-icon { background:  url(images/glyphish-icons/09-chat2.png) 50% 50% no-repeat; background-size: 24px 22px; }
+		#email .ui-icon { background:  url(images/glyphish-icons/18-envelope.png) 50% 50% no-repeat; background-size: 24px 16px;  }
+		#login .ui-icon { background:  url(images/glyphish-icons/30-key.png) 50% 50% no-repeat;  background-size: 12px 26px; }
+		#beer .ui-icon { background:  url(images/glyphish-icons/88-beermug.png) 50% 50% no-repeat;  background-size: 22px 27px; }
+		#coffee .ui-icon { background:  url(images/glyphish-icons/100-coffee.png) 50% 50% no-repeat;  background-size: 20px 24px; }
+		#skull .ui-icon { background:  url(images/glyphish-icons/21-skull.png) 50% 50% no-repeat;  background-size: 22px 24px; }
+	</style>
+
+</head>
+<body>
+
+
+    
+    <div id="pageInicial" data-role="page">
+    
+        <div data-role="header"> 
+            <h1>Structured Notes</h1> 
+            <a href="#pageOpciones" data-icon="gear" class="ui-btn-right" data-transition="slide">Opciones</a>
+        </div>
+        
+        
+        <ul data-role="listview" data-split-icon="gear" data-split-theme="d">
+    		<li><a href="index.html">
+				<img src="images/album-bb.jpg" />
+				<h3>Broken Bells</h3>
+				<p>Broken Bells</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				
+				<img src="images/album-hc.jpg" />
+				<h3>Warning</h3>
+				<p>Hot Chip</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="images/album-p.jpg" />
+				<h3>Wolfgang Amadeus Phoenix</h3>
+				<p>Phoenix</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="images/album-ok.jpg" />
+				<h3>Of The Blue Colour Of The Sky</h3>
+				<p>Ok Go</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="images/album-ws.jpg" />
+				<h3>Elephant</h3>
+				<p>The White Stripes</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="images/album-rh.jpg" />
+				<h3>Kid A</h3>
+				<p>Radiohead</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="images/album-xx.jpg" />
+				<h3>XX</h3>
+				<p>XX</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="images/album-mg.jpg" />
+				<h3>Congratulations</h3>
+				<p>MGMT</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="images/album-ag.jpg" />
+				<h3>Ashes Grammar</h3>
+				<p>A Sunny Day in Glasgow</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			
+			<li><a href="index.html">
+				<img src="images/album-k.jpg" />
+				<h3>Hot Fuss</h3>
+				<p>Killers</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">	
+				<img src="images/album-af.jpg" />
+				<h3>The Suburbs</h3>
+				<p>Arcade Fire</p>
+				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+		</ul>
+        
+        
+        
+        
+        
+    	
+    	<div data-role="footer" data-id="footer" data-position="fixed" class="nav-glyphish-example">
+    		<div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+    		<ul>
+    			<li><a href="#pageInicial" id="chat" data-icon="custom" data-transition="slide">Notas</a></li>
+    			<li><a href="#pageEdicionMinuta" id="email" data-icon="custom" data-transition="slide">Edicion</a></li>
+    			<li><a href="#pageEdicionMinutaTables" id="skull" data-icon="custom">Tables</a></li>
+    			<li><a href="#" id="beer" data-icon="custom">Beer</a></li>
+    			<li><a href="#" id="coffee" data-icon="custom">Coffee</a></li>
+    		</ul>
+    		</div>
+    	</div>
+        
+    </div><!-- /pageInicial -->
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="pageEdicionMinuta" data-role="page" data-add-back-btn="true">
+    
+        <div data-role="header"> 
+            <h1>Edicion de minuta</h1> 
+        </div>
+    
+        <div class="content">
+        	<div class="top_block bloqueSuperior">
+    			<div class="content">
+    				<div class="background bloqueAsistentes">
+    				</div>
+    				<div class="left_block bloqueAsistentes">
+    					<div id="bloqueAsistentes" class="content">
+                            BLOQUE ASISTENTES
+    					</div>
+    				</div>
+    				<div class="background bloqueAcciones">
+    				</div>
+    				<div class="right_block bloqueAcciones">
+    					<div id="bloqueAcciones" class="content">
+                            BLOQUE ACCIONES
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="background bloqueNota">
+    		</div>
+    		<div class="center_block bloqueNota">
+    			<div id="bloqueNota" class="content">
+                    BLOQUE NOTA
+    			</div>
+    		</div>
+    		<div class="bottom_block bloqueSWOT">
+    			<div class="content">
+    				<div class="top_block bloqueSW">
+    					<div class="content">
+    						<div class="background bloqueS">
+    						</div>
+    						<div class="left_block bloqueS">
+    							<div id="bloqueS" class="content">
+                                    BLOQUE S
+    							</div>
+    						</div>
+    						<div class="background bloqueW">
+    						</div>
+    						<div class="right_block bloqueW">
+    							<div id="bloqueW" class="content">
+                                    BLOQUE W
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    				<div class="bottom_block bloqueOT">
+    					<div class="content">
+    						<div class="background bloqueO">
+    						</div>
+    						<div class="left_block bloqueO">
+    							<div id="bloqueO" class="content">
+                                    BLOQUE O
+    							</div>
+    						</div>
+    						<div class="background bloqueT">
+    						</div>
+    						<div class="right_block bloqueT">
+    							<div id="bloqueT" class="content">
+                                    BLOQUE T
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+        
+        
+        <div data-role="footer" data-id="footer" data-position="fixed" class="nav-glyphish-example">
+        	<div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+    		<ul>
+    			<li><a href="#pageInicial" id="chat" data-icon="custom">Notas</a></li>
+    			<li><a href="#pageEdicionMinuta" id="email" data-icon="custom">Edicion</a></li>
+    			<li><a href="#" id="skull" data-icon="custom">Opciones</a></li>
+    			<li><a href="#" id="beer" data-icon="custom">Beer</a></li>
+    			<li><a href="#" id="coffee" data-icon="custom">Coffee</a></li>
+    		</ul>
+    		</div>
+    	</div>
+        
+    </div><!-- /pageEdicionMinuta -->
+    
+    
+    
+    
+    
+    
+    
+    <div id="dialogoEdicionCampo" data-role="page"><!-- dialogoEdicionCampo -->
+        <div data-role="header"> 
+            <h1>placeHolder campo</h1> 
+            
+        </div>
+    
+        <div class="content">
+            <div id="wysihtml5-toolbar" style="display: none;">
+              <header>
+                <ul class="commands">
+                  <li data-wysihtml5-command="bold" title="Make text bold (CTRL + B)" class="command"></li>
+                  <li data-wysihtml5-command="italic" title="Make text italic (CTRL + I)" class="command"></li>
+                  <li data-wysihtml5-command-group="foreColor" class="fore-color" title="Color the selected text" class="command">
+                    <ul>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="gray"></li>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red"></li>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green"></li>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue"></li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+              </header>  
+            </div>
+            <form><textarea id="wysihtml5-textarea" placeholder="Enter your text ..." autofocus></textarea></form>
+        </div>
+    
+    </div><!-- /dialogoEdicionCampo -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="pageEdicionMinutaTables" data-role="page" data-add-back-btn="true">
+    
+        <div data-role="header"> 
+            <h1>Edicion de minuta - Table layout</h1> 
+            <a href="#" id="botPruebas" data-icon="gear" class="ui-btn-right" data-transition="slide">PRUEBAS</a>
+        </div>
+    
+        <div class="content">
+            <table id="tablaMinuta" width="100%">
+                <tbody>
+                <tr id="tablaMinuta_filaAsistentesAcciones">
+                    <td width="50%" valign="top">
+                        
+                        <strong>Asistentes</strong>
+                        <div id="iScrollTest1" style="width:100%; max-height:300px">
+                        <div id="tablaMinuta_Asistentes"  class="scroll-pane">
+                            orem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- iScrollTest1 -->
+                    </td>
+                    
+                    <td width="50%" valign="top">
+                        <strong>Acciones</strong>
+                        <div id="iScrollTest2" style="width:100%; max-height:300px">
+                        <div id="tablaMinuta_Acciones" style="width:100%; max-height:300px; overflow:auto">
+                            orem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- iScrollTest2 -->
+                    </td>
+                </tr>
+                
+                <tr id="tablaMinuta_filaNotas">
+                    <td id="tablaMinuta_Notas" colspan="2" width="100%">
+                        Notas
+                    </td>
+                </tr>
+                
+                <tr id="tablaMinuta_filaSW">
+                    <td id="tablaMinuta_S" width="50%">
+                        Strengths
+                    </td>
+                    <td id="tablaMinuta_W" width="50%">
+                        Weaknesses
+                    </td>
+                </tr>
+                
+                <tr id="tablaMinuta_filaOT">
+                    <td id="tablaMinuta_O" width="50%">
+                        Opportunities
+                    </td>
+                    <td id="tablaMinuta_T" width="50%">
+                        Threats
+                    </td>
+                </tr>
+                </tbody>   
+            </table>
+    	</div>
+        
+        
+        <div data-role="footer" data-id="footer" data-position="fixed" class="nav-glyphish-example">
+        	<div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+    		<ul>
+    			<li><a href="#pageInicial" id="chat" data-icon="custom">Notas</a></li>
+    			<li><a href="#pageEdicionMinuta" id="email" data-icon="custom">Edicion</a></li>
+    			<li><a href="#" id="skull" data-icon="custom">Opciones</a></li>
+    			<li><a href="#" id="beer" data-icon="custom">Beer</a></li>
+    			<li><a href="#" id="coffee" data-icon="custom">Coffee</a></li>
+    		</ul>
+    		</div>
+    	</div>
+        
+    </div><!-- /pageEdicionMinutaTables -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="pageOpciones" data-role="page" data-add-back-btn="true">
+    
+        <div data-role="header"> 
+            <h1>Opciones</h1> 
+            <a href="#" id="botOpciones_guardar" data-icon="gear" class="ui-btn-right">Guardar</a>
+        </div>
+        
+        <div data-role="content">
+            <div data-role="collapsible-set" data-inset="false">
+    
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>General</h3>
+                	<p>Opciones generales de StructuredNotes</p>
+                    <ul data-role="listview">
+                        <li data-role="fieldcontain">
+                            <label for="slider">Slider:</label>
+                		    <input type="range" name="slider" id="slider" value="0" min="0" max="300"  />
+            			</li>
+                    </ul>
+            	</div>
+                
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>Alturas maximas</h3>
+                    <p>Alturas maximas para los elementos de las minutas</p>
+                    <p>Si el contenido del bloque excede el tamaño especificado apareceran barras de desplazamiento para facilitar la navegación por el contenido</br></p>
+                    <ul data-role="listview">
+                        <li data-role="fieldcontain">
+                            <label for="sliderAsistentes">Asistentes</label>
+                		    <input type="range" name="sliderAsistentes" id="sliderAsistentes" value="0" min="0" max="100"  />
+            			</li>
+                        
+                        <li data-role="fieldcontain">
+                            <label for="sliderAcciones">Acciones</label>
+                    	    <input type="range" name="sliderAcciones" id="sliderAcciones" value="0" min="0" max="100"  />
+            			</li>
+                        
+                        <li data-role="fieldcontain">
+                            <label for="sliderSWOT">SWOT</label>
+                            <input type="range" name="sliderSWOT" id="sliderSWOT" value="0" min="0" max="100"  />
+            			</li>
+                    </ul>
+            	</div>
+                
+                <div data-role="collapsible" data-collapsed="true">
+                	<h3>Presentación</h3>
+                	<p>Opciones de presentación y edición de las minutas</p>
+            	</div>
+            	
+            	<div data-role="collapsible" data-collapsed="true">
+                	<h3>Avanzado</h3>
+                	<p>Opciones avanzadas</p>
+            	</div>
+            	
+            </div>
+        </div>
+    
+    </div><!-- /pageOpciones -->
+    
+    
+    
+    <!-- CARGA DE LIBRERIAS -->
+    <script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="jquery.mobile-1.3.1.min.js"></script>  
+    <script type="text/javascript" src="http://jscrollpane.kelvinluck.com/script/jquery.jscrollpane.min.js"></script>
+    <script src="plugins/wysihtml5/parser_rules/advanced.js"></script>
+    <script src="plugins/wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
+    
+    <script src="plugins/iscroll4/src/iscroll.js"></script>
+    
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/utilidades.js"></script>
+    <script type="text/javascript" src="structuredNotesMain.js"></script>
+
+</body>
+</html>

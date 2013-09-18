@@ -1,0 +1,42 @@
+// COMPILAR EN MAC OS X PARA PHONEGAP
+-- Abrir la consola y navegar al directorio home del usuario "User"
+-- Ahi hay una carpeta testApp, dentro hay otra llamada www
+-- Copiar todo el codigo del Intel XDK dentro de la carpeta www
+-- Ejecutar: phonegap run ios
+
+Guardar las notas en varios ficheros, uno por cada seccion de la nota
+Guardar las notas en un unico fichero xml con formateado html en cada seccion 
+    <minuta>
+        <asistentes>
+            <b>Juan Mario</b>
+        </asistentes>
+        <acciones>
+            blabla...
+        </acciones>
+        <nota>
+            blablabla...
+        </nota>
+        <S></S>
+        <W></W>
+        <O></O>
+        <T></T>
+    </minuta>
+
+Guardar en localStorage las minutas en formato array:
+    localstorage.minutas[0..n)
+        minuta[0..7] 
+        0 - Nombre
+        1 - Asistentes
+        2 - Acciones
+        3 - Notas
+        4 - S
+        5 - W
+        6 - O
+        7 - T
+
+Cada elemento del listView inicial con las notas deberia tener data-fichero o algo asi para luego recogerlo con un 
+cargarMinuta() {
+    var $this = $( this ),
+    fichero = $this.jqmData("fichero");
+    //Leer el fichero y procesar cada seccion del XML en la minuta
+}

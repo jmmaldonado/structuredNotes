@@ -1,0 +1,494 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+<title>Structured Notes</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" charset="utf-8" src="_appMobi/appmobi_local_bootstrap.js"></script> 
+<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script> 
+
+
+<link href="themes/jquery.mobile-1.3.2.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        /* This function runs once the page is loaded, but appMobi is not yet active */
+        var init = function(){
+        
+        };
+        window.addEventListener("load",init,false);  
+        
+        /* This code prevents users from dragging the page */
+        var preventDefaultScroll = function(event) {
+            event.preventDefault();
+            window.scroll(0,0);
+            return false;
+        };
+        document.addEventListener('touchmove', preventDefaultScroll, false);
+        
+        /* This code is used to run as soon as appMobi activates */
+        var onDeviceReady=function(){
+            //Size the display to 768px by 1024px
+            AppMobi.display.useViewport(768,1024);
+        	
+        	//hide splash screen
+        	AppMobi.device.hideSplashScreen();	
+        };
+        document.addEventListener("appMobi.device.ready",onDeviceReady,false);    
+    </script>
+
+    <!--
+    <link rel="stylesheet" href="font-awesome/css/bootstrap-combined.no-icons.min.css"> -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+   
+</head>
+<body>
+
+
+    
+    <div id="pageInicial" data-role="page" data-theme="c">
+    
+        <!-- MENU PRINCIPAL DE LA APLICACION -->
+        <div data-role="panel" id="panelMenuPrincipal" data-position="left" data-display="reveal" data-theme="a">
+            
+            <ul data-role="listview" data-theme="a" data-dividertheme="d" class="record-list">
+    			<li data-theme="b"><a href="#">&nbsp;</a></li>
+    			<li><a href="#pageEdicionMinutaTables"><i class="icon-edit"></i>&nbsp;&nbsp;&nbsp;Editar minuta</a></li>
+    			<li><a href="#pageEdicionMinuta"><i class="icon-phone"></i>&nbsp;&nbsp;&nbsp;OLD Editar minuta</a></li>
+    			<li data-role="list-divider">Structured Notes</a></li>
+    			<li><a href="#pageOpciones">Opciones</a></li>
+                <li><a href="#">Ayuda</a></li>
+    			<li><a href="#">Acerca de</a></li>    
+    		</ul>
+            
+        </div><!-- /panelMenuPrincipal -->
+        
+        
+        <!-- CABECERA DE LA PAGINA PRINCIPAL -->
+        <div data-role="header" id="headerPaginaPrincipal" data-theme="b" class="ui-icon-nodisc">             
+            <a href="#panelMenuPrincipal" data-icon="grid" data-iconpos="left">Menu</a>
+            <h1>Structured Notes</h1> 
+            <a href="#pageNuevaMinuta" data-icon="plus" data-iconpos="right" data-rel="dialog">Nueva minuta</a>
+        </div><!-- /headerPaginaPrincipal -->
+        
+        <div class="content" data-role="content">
+            <ul data-role="listview" data-theme="c" data-dividertheme="d" id="listaMinutas">
+                <li>EOEOE</li>
+                <!--
+        		<li><a href="index.html">
+    				<img src="images/album-bb.jpg" />
+    				<h3>Broken Bells</h3>
+    				<p>Broken Bells</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				
+    				<img src="images/album-hc.jpg" />
+    				<h3>Warning</h3>
+    				<p>Hot Chip</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				<img src="images/album-p.jpg" />
+    				<h3>Wolfgang Amadeus Phoenix</h3>
+    				<p>Phoenix</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				<img src="images/album-ok.jpg" />
+    				<h3>Of The Blue Colour Of The Sky</h3>
+    				<p>Ok Go</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				<img src="images/album-ws.jpg" />
+    				<h3>Elephant</h3>
+    				<p>The White Stripes</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				<img src="images/album-rh.jpg" />
+    				<h3>Kid A</h3>
+    				<p>Radiohead</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				<img src="images/album-xx.jpg" />
+    				<h3>XX</h3>
+    				<p>XX</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				<img src="images/album-mg.jpg" />
+    				<h3>Congratulations</h3>
+    				<p>MGMT</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">
+    				<img src="images/album-ag.jpg" />
+    				<h3>Ashes Grammar</h3>
+    				<p>A Sunny Day in Glasgow</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			
+    			<li><a href="index.html">
+    				<img src="images/album-k.jpg" />
+    				<h3>Hot Fuss</h3>
+    				<p>Killers</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+    			<li><a href="index.html">	
+    				<img src="images/album-af.jpg" />
+    				<h3>The Suburbs</h3>
+    				<p>Arcade Fire</p>
+    				</a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+    			</li>
+                -->
+    		</ul>
+        </div>
+                
+        
+    </div><!-- /pageInicial -->
+    
+    
+    
+    
+    
+    
+    <div id="pageNuevaMinuta" data-role="page" data-theme="c" data-close-btn="none">
+        
+        <div data-role="header" data-theme="c">
+            <a href="#pageInicial" data-role="button">Cancelar</a>
+    		<h1>Nueva minuta</h1>
+            <a href="#" id="botNuevaMinuta" data-role="button" data-theme="b">Crear Minuta</a>
+		</div>
+        
+        <div data-role="content">
+			<label for="textNombreMinuta">Nombre de la minuta:</label>
+            <input type="text" name="name" id="textNombreMinuta" value=""  />   
+		</div>
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="pageEdicionMinuta" data-role="page" data-add-back-btn="true">
+    
+        <div data-role="header"> 
+            <h1>Edicion de minuta</h1> 
+        </div>
+        
+    
+        <div class="content" data-role="content">
+        	PAGINA VACIA<br/>
+            <a href="#" id="botPruebasPhonegap" data-role="button" data-icon="custom">Pruebas Phonegap</a>
+    	</div>
+        
+        
+        <div data-role="footer" data-id="footer" data-position="fixed" class="nav-glyphish-example">
+        	<div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+    		<ul>
+    			<li><a href="#pageInicial" id="chat" data-icon="custom">Notas</a></li>
+    			<li><a href="#pageEdicionMinuta" id="email" data-icon="custom">Edicion</a></li>
+    			<li><a href="#" id="skull" data-icon="custom">Opciones</a></li>
+    			<li><a href="#" id="beer" data-icon="custom">Beer</a></li>
+    			<li><a href="#" id="coffee" data-icon="custom">Coffee</a></li>
+    		</ul>
+    		</div>
+    	</div>
+        
+    </div><!-- /pageEdicionMinuta -->
+    
+    
+    
+    
+    
+    
+    <!-- OLD: Usaba Wysihtml5 pero no es compatible con Phonegap --
+    <div id="dialogoEdicionCampo" data-role="page" data-campo="" data-add-back-btn="true">-- dialogoEdicionCampo --
+        
+        <div data-role="header" data-theme="b"> 
+            <h1><span id="spanTituloEdicionCampo">placeHolder campo</span></h1> 
+            <a href="#" data-icon="check" class="ui-btn-right" data-theme="b" id="botGuardarEdicionCampo">Guardar</a>
+        </div>
+    
+        <div class="content" data-role="content">
+            <div id="wysihtml5-toolbar" style="display: none;">
+              <header>
+                <ul class="commands">
+                  <li data-wysihtml5-command="bold" title="Make text bold (CTRL + B)" class="command"></li>
+                  <li data-wysihtml5-command="italic" title="Make text italic (CTRL + I)" class="command"></li>
+                  <li data-wysihtml5-command-group="foreColor" class="fore-color" title="Color the selected text" class="command">
+                    <ul>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="gray"></li>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red"></li>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green"></li>
+                      <li data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue"></li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+              </header>  
+            </div>
+            <form><textarea id="wysihtml5-textarea" placeholder="Enter your text ..." autofocus style="height: 500px;"></textarea></form>
+        </div>
+    
+    </div>-- /dialogoEdicionCampo -->
+    
+    
+    
+    
+    <div id="dialogoEdicionCampoCKEditor" data-role="page" data-campo="" data-add-back-btn="true" data-theme="b"><!-- dialogoEdicionCampo -->
+        
+        <div data-role="header" data-theme="b"> 
+            <a href="#" data-icon="back" class="ui-btn-left" data-theme="b" id="botCancelarEdicionCampoCKEditor">Cancelar</a>
+            <h1><span id="spanTituloEdicionCampoCKEditor">placeHolder campo</span></h1> 
+            <a href="#" data-icon="check" class="ui-btn-right" data-theme="b" id="botGuardarEdicionCampoCKEditor">Guardar</a>
+        </div>
+    
+        <div class="content" data-role="content">
+            <form>
+                <textarea id="textareaCKEditor">
+                    &lt;p&gt;Initial value.&lt;/p&gt;
+                </textarea>
+                
+            </form>
+        </div>
+    
+    </div><!-- /dialogoEdicionCampoCKEditor -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="pageEdicionMinutaTables" data-role="page">
+    
+        <!-- MENU PRINCIPAL DE LA APLICACION -->
+        <div data-role="panel" id="panelMenuEdicionMinuta" data-position="right" data-display="reveal" data-theme="b">
+            
+            <h3>Opciones de minuta</h3>
+            <br>
+            <a href="#" data-icon="back" data-role="button" data-theme="c" id="botCancelarEdicionMinuta">Descartar cambios</a>
+            
+        </div><!-- /panelMenuEdicionMinuta -->
+    
+    
+        <div data-role="header" id="cabecera" data-theme="b"> 
+            <a href="#" data-role="button" id="botGuardarMinuta" data-theme="b" data-icon="check">Guardar</a>
+            <h1>Edicion de minuta - Table layout</h1> 
+            <a href="#panelMenuEdicionMinuta" id="botOpcionesEdicionMinuta" data-icon="gear" class="ui-btn-right" data-transition="slide">Opciones</a>
+        </div>
+    
+        <div class="content" data-role="content">
+            <table id="tablaMinuta" width="100%">
+                <tbody>
+                <tr id="tablaMinuta_filaAsistentesAcciones">
+                    <td width="50%" valign="top">
+                                            
+                        <div id="tablaMinuta_Asistentes" data-campo="Asistentes">
+                        <div>
+                            <span class="etiquetaCelda"><strong>Asistentes</strong><br></span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- tablaMinuta_Asistentes -->
+                    </td>
+                    
+                    <td width="50%" valign="top">
+                        
+                        <div id="tablaMinuta_Acciones" data-campo="Acciones">
+                        <div>
+                            <span class="etiquetaCelda"><strong>Acciones</strong><br></span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- tablaMinuta_Acciones -->
+                    </td>
+                </tr>
+                
+                <tr id="tablaMinuta_filaNotas">
+                    <td colspan="2" width="100%">
+                        <div id="tablaMinuta_Notas" data-campo="Notas">
+                        <div>
+                            <span class="etiquetaCelda"><strong>Notas</strong><br></span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- tablaMinuta_Notas -->
+                    </td>
+                </tr>
+                
+                <tr id="tablaMinuta_filaSW">
+                    <td width="50%">
+                        <div id="tablaMinuta_S" data-campo="Fortalezas">
+                        <div>
+                            <span class="etiquetaCelda"><strong>Fortalezas</strong><br></span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- tablaMinuta_S -->
+                    </td>
+                    <td width="50%">
+                        <div id="tablaMinuta_W" data-campo="Debilidades">
+                        <div>
+                            <span class="etiquetaCelda"><strong>Debilidades</strong><br></span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- tablaMinuta_W -->
+                    </td>
+                </tr>
+                
+                <tr id="tablaMinuta_filaOT">
+                    <td width="50%">
+                        <div id="tablaMinuta_O" data-campo="Oportunidades">
+                        <div>
+                            <span class="etiquetaCelda"><strong>Oportunidades</strong><br></span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- tablaMinuta_O -->
+                    </td>
+                    <td width="50%">
+                        <div id="tablaMinuta_T" data-campo="Amenazas">
+                        <div>
+                            <span class="etiquetaCelda"><strong>Amenazas</strong><br></span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet bibendum orci vel tincidunt. Maecenas consequat gravida quam id eleifend. Nullam scelerisque sodales dapibus. Vestibulum euismod turpis ut risus feugiat vitae iaculis urna congue. Quisque vel dolor eros, ac hendrerit nibh. Duis hendrerit, elit ac hendrerit tristique, arcu elit auctor dolor, eu varius purus lorem non sapien. Sed auctor, nulla nec faucibus adipiscing, leo nunc luctus ante, at adipiscing turpis leo non dolor. Donec facilisis egestas nibh, ut elementum libero mollis nec. Proin et orci id nunc placerat dignissim et quis magna. Nunc tincidunt lectus vel leo tempor pharetra. Praesent interdum ipsum vitae velit sagittis non blandit eros commodo. Phasellus lacus neque, ultrices at rhoncus eget, venenatis in leo. Fusce malesuada magna semper neque malesuada rutrum. Praesent lacinia, dolor sed posuere dapibus, nibh leo posuere neque, molestie laoreet nisi ante ut massa. Ut varius rhoncus facilisis. Pellentesque vel aliquam sem.
+                            In tempus faucibus nibh id tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec felis mauris, luctus sed ullamcorper in, malesuada et enim. Maecenas velit nisi, dignissim et blandit quis, pellentesque at mauris. Duis accumsan venenatis eleifend. Proin ante eros, consequat nec dignissim auctor, iaculis ut leo. Cras eu rhoncus velit. Pellentesque consectetur magna ac odio feugiat pharetra. Nulla facilisi. Curabitur laoreet ullamcorper purus, eu dictum nisl ultricies id. Mauris nec augue sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent scelerisque fringilla nibh cursus facilisis. Integer elementum tortor in augue ultricies at ornare magna adipiscing. Morbi est felis, bibendum non porttitor quis, interdum vitae nulla. Vivamus sit amet dictum nunc.
+                            Nulla facilisi. Integer tincidunt nulla ut mauris semper interdum. Praesent eget est mauris, sit amet pharetra ligula. In dictum, tortor in cursus condime
+                        </div>
+                        </div><!-- tablaMinuta_T -->
+                    </td>
+                </tr>
+                </tbody>   
+            </table>
+    	</div>
+        
+        <!--
+        <div data-role="footer" data-id="footer" data-position="fixed" class="nav-glyphish-example" id="pie">
+        	<div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+    		<ul>
+    			<li><a href="#pageInicial" id="chat" data-icon="custom">Notas</a></li>
+    			<li><a href="#pageEdicionMinuta" id="email" data-icon="custom">Edicion</a></li>
+    			<li><a href="#" id="skull" data-icon="custom">Opciones</a></li>
+    			<li><a href="#" id="beer" data-icon="custom">Beer</a></li>
+    			<li><a href="#" id="coffee" data-icon="custom">Coffee</a></li>
+    		</ul>
+    		</div>
+    	</div>
+        -->
+        
+    </div><!-- /pageEdicionMinutaTables -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="pageOpciones" data-role="page" data-add-back-btn="true">
+    
+        <div data-role="header" data-theme="b"> 
+            <h1>Opciones</h1> 
+            <a href="#" id="botOpciones_guardar" data-icon="gear" class="ui-btn-right">Guardar</a>
+        </div>
+        
+        <div data-role="content">
+            <div data-role="collapsible-set" data-inset="false">
+    
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>General</h3>
+                	<p>Opciones generales de StructuredNotes</p>
+                    <ul data-role="listview">
+                        <li data-role="fieldcontain">
+                            <label for="slider">Slider:</label>
+                		    <input type="range" name="slider" id="slider" value="0" min="0" max="300"  />
+            			</li>
+                    </ul>
+            	</div>
+                
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>Alturas maximas</h3>
+                    <p>Alturas maximas para los elementos de las minutas</p>
+                    <p>Si el contenido del bloque excede el tamaño especificado apareceran barras de desplazamiento para facilitar la navegación por el contenido</br></p>
+                    <ul data-role="listview">
+                        <li data-role="fieldcontain">
+                            <label for="sliderAsistentesAcciones">Asistentes y acciones</label>
+                		    <input type="range" name="sliderAsistentesAcciones" id="sliderAsistentesAcciones" value="0" min="0" max="100"  />
+            			</li>
+                        
+                        <li data-role="fieldcontain">
+                            <label for="sliderSWOT">SWOT</label>
+                            <input type="range" name="sliderSWOT" id="sliderSWOT" value="0" min="0" max="100"  />
+            			</li>
+                    </ul>
+            	</div>
+                
+                <div data-role="collapsible" data-collapsed="true">
+                	<h3>Presentación</h3>
+                	<p>Opciones de presentación y edición de las minutas</p>
+            	</div>
+            	
+            	<div data-role="collapsible" data-collapsed="true">
+                	<h3>Avanzado</h3>
+                	<p>Opciones avanzadas</p>
+            	</div>
+            	
+            </div>
+        </div>
+    
+    </div><!-- /pageOpciones -->
+    
+    
+    
+    <!-- CARGA DE LIBRERIAS -->
+    <script src="phonegap.js"></script>
+    
+    
+    <script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="jquery.mobile-1.3.2.min.js"></script>  
+    <!--<script type="text/javascript" src="http://jscrollpane.kelvinluck.com/script/jquery.jscrollpane.min.js"></script>-->
+    
+    <script src="plugins/ckeditor/ckeditor.js"></script>
+    
+    <!-- OLD: Antes se usaba para editar las minutas, ahora usamos CKEditor
+    <script src="plugins/wysihtml5/parser_rules/advanced.js"></script>
+    <script src="plugins/wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
+    -->
+    
+    <!-- Para hacer que las celdas de la tabla sean scrollables de forma independiente -->
+    <script src="plugins/iscroll4/src/iscroll.js"></script>
+    
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/utilidades.js"></script>
+    <script type="text/javascript" src="structuredNotesMain.js"></script>
+    
+    <script type="text/javascript" src="js/pruebas.js"></script>
+
+</body>
+</html>
